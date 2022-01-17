@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles/main.css" />
+  </head>
+
+  <body>
+    <div id="container">
+      <div id="sidebar">
+      
+      </div>
+
+      <div id="main">
+       
+      </div>
+    </div>
+    </div>
+  </body>
+</html>
+<script
+type="module">
+
+
+// var id;
+ 
+//   let main = document.getElementById("main");
+//   import sidebar from "./components/sidebar.js";
+//   import { apiCall, appendArticles } from "./scripts/main.js";
+//   let input = document.getElementById("inp");
+
+//   let side = document.getElementById("sidebar");
+//   side.innerHTML = sidebar();
+
+//   input.addEventListener("keypress", debounce);
+
+//   function searchUser(input) {
+//     main.textContent = "";
+
+//     let inp = document.getElementById("se").value;
+
+//     let response = apiCall(
+//       `https://gnews.io/v2/search?q=${inp}&token=73b12edf95806d1c2ad7b5bf744485e2`
+//     );
+
+//     response.then((res) => {
+//       appendArticles(res, main);
+//     });
+//   }
+
+//   function debounce() {
+//     if (id) {
+//       clearTimeout(id);
+//     }
+
+//     id = setTimeout(() => {
+//       searchUser(input);
+//     }, 3000);
+//   }
+
+
+let id;
+  import sidebar from "./components/sidebar.js";
+  let side = document.getElementById("sidebar");
+  side.innerHTML = sidebar();
+
+  import { apiCall, appendArticles } from "./scripts/main.js";
+
+  let input=document.getElementById("inp").addEventListener("keypress",searcha())
+function searcha(){
+
+  let inp=document.getElementById("inp").value
+  // inp.innerHTML=""
+  let response = apiCall(
+    `https://gnews.io/api/v4/search?q=${inp}&token=73b12edf95806d1c2ad7b5bf744485e2`
+  );
+  console.log(response);
+  let main = document.getElementById("main");
+  response.then((res) => {
+    appendArticles(res, main);
+  });
+
+}
+  </script>
